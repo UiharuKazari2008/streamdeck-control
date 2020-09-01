@@ -132,6 +132,7 @@ if (typeof config.devices !== undefined) {
                         console.error(`Failed to fill Key #${keyIndexString}, Fill Settings are not as expected (Should be a Array ["R", "G", "B"])`)
                     }
                 } else if (keySetting.fillType === "image") {
+                    console.log(keyImages.get(keyIndexString))
                     streamDeck.fillImage(keyIndex, keyImages.get(keyIndexString))
                 } else if (deviceKeys[keyIndex] === "null") {
                     // Skip Key cause its set to blank
