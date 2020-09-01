@@ -8,13 +8,13 @@ const { openStreamDeck, listStreamDecks, getStreamDeckInfo } = require('elgato-s
 const config = require('./config.json');
 
 console.log('Devices:\n', listStreamDecks());
+let keyImages = new Map();
 
 if (typeof config.devices !== undefined) {
     for (let device in config.devices) {
         let streamDeck // Init Device Object
         let deviceInfo
         let folderID = ''
-        let keyImages = new Map();
 
         // Initialize device object
         if (config.devices[device].deviceID === "") {
