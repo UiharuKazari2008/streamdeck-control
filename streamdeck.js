@@ -89,7 +89,8 @@ if (typeof config.devices["0"] !== undefined) {
                                 console.log(`Failed to GET ${deviceKeys[keyIndex].eventParam} for key ${keyIndex} ...`)
                                 console.error(err)
                             } else {
-                                console.log(`Sent GET to ${deviceKeys[keyIndex].eventParam}!`)
+                                console.log(`Sent GET to ${deviceKeys[keyIndex].eventParam} ...`)
+                                console.log(body.toString())
                             }
                         })
                     } else {
