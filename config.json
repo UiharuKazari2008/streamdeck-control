@@ -6,28 +6,32 @@
       "fillDevice": "",
       "keys": [
         {
-          "fillType": "color",
-          "fillParam": [
-            "255",
-            "0",
-            "0"
-          ],
+          "fillType": "image",
+          "fillParam": "img/0.png",
           "eventType": "get",
           "eventParam": "here.jp"
         },
         {
-          "fillType": "color",
-          "fillParam": [
-            "0",
-            "255",
-            "0"
-          ],
+          "fillType": "image",
+          "fillParam": "img/1.png",
           "eventType": "curl",
           "eventParam": "here.jp"
         },
         {
           "fillType": "image",
-          "fillParam": "img/fan.png",
+          "fillParam": "img/2.png",
+          "eventType": "get",
+          "eventParam": "here.jp"
+        },
+        {
+          "fillType": "image",
+          "fillParam": "img/3.png",
+          "eventType": "get",
+          "eventParam": "here.jp"
+        },
+        {
+          "fillType": "image",
+          "fillParam": "img/4.png",
           "eventType": "get",
           "eventParam": "here.jp"
         }
