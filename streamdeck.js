@@ -39,12 +39,14 @@ if (typeof config.devices["0"] !== undefined) {
             console.log((typeof keySetting.fillParam).toString())
             if (keySetting.fillType === "color") {
                 if ((typeof keySetting.fillParam).toString() === "object" && keySetting.fillParam.length === 3) {
+                    console.log(`Set Color for ${key} to ${keySetting.fillParam[0]},${keySetting.fillParam[1]},${keySetting.fillParam[2]}`)
                     streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
                 } else {
                     console.error(`Key ${key} Fill Settings are not as expected, Should be a Array ["R", "G", "B"]`)
                 }
             } else if (keySetting.fillType === "image") {
                 if ((typeof keySetting.fillParam).toString() === "string") {
+                    console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
                     //streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
                 } else {
                     console.error(`Key ${key} Fill Settings are not as expected, Should be a String "./file/path"`)
