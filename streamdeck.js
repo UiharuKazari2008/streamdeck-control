@@ -31,6 +31,8 @@ if (typeof config.devices["0"] !== undefined) {
 
         function drawKeys(deviceKeys, arrayType) {
             if (arrayType === 'folder') {
+                streamDeck.clearAllKeys()
+
                 if (fs.existsSync(path.resolve(__dirname, 'img/back.png'))) {
                     console.log(`Set Image for 0 to back button`)
                     sharp(path.resolve(__dirname, 'img/back.png'))
@@ -146,10 +148,14 @@ if (typeof config.devices["0"] !== undefined) {
                 if (folderID === "") {
                     doKeyAction(config.devices[device].keys)
                 } else {
-                    if (config.devices[device].keys[keyIndex].items !== undefined && config.devices[device].keys[keyIndex].items.length > 0) {
-                        doKeyAction(config.devices[device].keys[keyIndex].items)
+                    if (keyIndex === 0) {
+                        drawKeys(config.devices[device].keys, 'init')
                     } else {
-                        console.log(`Folder on Key ${keyIndex} is not correctly configured`)
+                        if (config.devices[device].keys[keyIndex].items !== undefined && config.devices[device].keys[keyIndex].items.length > 0) {
+                            doKeyAction(config.devices[device].keys[keyIndex].items)
+                        } else {
+                            console.log(`Folder on Key ${keyIndex} is not correctly configured`)
+                        }
                     }
                 }
             } else {

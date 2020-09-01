@@ -75,7 +75,7 @@
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/1.png",
+              "fillParam": "img/0.png",
               "eventType": "curl",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
             }
