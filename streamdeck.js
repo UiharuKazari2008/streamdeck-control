@@ -51,7 +51,7 @@ if (typeof config.devices["0"] !== undefined) {
                                     .raw() // Give us uncompressed RGB.
                                     .toBuffer()
                                     .then(buffer => {
-                                        streamDeck.fillImage(key, buffer)
+                                        streamDeck.fillImage(parseInt(key), buffer)
                                     })
                                     .catch(err => {
                                         console.error(`Failed to set image on key ${key} due to a Sharp error! ....`)
