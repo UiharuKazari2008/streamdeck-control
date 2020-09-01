@@ -53,7 +53,7 @@ if (typeof config.devices !== undefined) {
             }
             for (let index in deviceKeys) {
                 function generateCacheSet(keySetting, key, folder) {
-                    if (keySetting === "null" || keySetting.fillType === "image") {
+                    if (keySetting.fillType === "image") {
                         if ((typeof keySetting.fillParam).toString() === "string") {
                             if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
                                 console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
@@ -79,6 +79,8 @@ if (typeof config.devices !== undefined) {
                         } else {
                             console.error(`Failed to cache image for ${key} : Fill Settings are not as expected, Should be a String "./file/path"`)
                         }
+                    } else if (keySetting === "null") {
+
                     } else {
                         console.error(`Unknown Fill Type of : ${keySetting.fillType}`)
                     }
@@ -116,8 +118,10 @@ if (typeof config.devices !== undefined) {
                     }
                 } else if (keySetting.fillType === "image") {
                     if (arrayType === 'folder') {
+                        console.log(keyImages.has(`key-${key}`))
                         streamDeck.fillImage(parseInt(key), keyImages.get(`${folderID}-${key}`))
                     } else {
+                        console.log(keyImages.has(`key-${key}`))
                         streamDeck.fillImage(parseInt(key), keyImages.get(`key-${key}`))
                     }
                 } else if (deviceKeys[key] === "null") {
