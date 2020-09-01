@@ -53,7 +53,7 @@ if (typeof config.devices !== undefined) {
             }
             for (let index in deviceKeys) {
                 function generateCacheSet(keySetting, key, folder) {
-                    if (keySetting.fillType === "image") {
+                    if (keySetting === "null" || keySetting.fillType === "image") {
                         if ((typeof keySetting.fillParam).toString() === "string") {
                             if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
                                 console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
@@ -115,7 +115,11 @@ if (typeof config.devices !== undefined) {
                         console.error(`Key ${key} Fill Settings are not as expected, Should be a Array ["R", "G", "B"]`)
                     }
                 } else if (keySetting.fillType === "image") {
-                    streamDeck.fillImage(parseInt(key), keyImages.get(`key-${key}`))
+                    if (arrayType === 'folder') {
+                        streamDeck.fillImage(parseInt(key), keyImages.get(`${folderID}-${key}`))
+                    } else {
+                        streamDeck.fillImage(parseInt(key), keyImages.get(`key-${key}`))
+                    }
                 } else if (deviceKeys[key] === "null") {
                     // Skip Key cause its set to blank
                 } else {
