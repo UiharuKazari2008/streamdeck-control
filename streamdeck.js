@@ -115,7 +115,7 @@ if (typeof config.devices["0"] !== undefined) {
                 function doKeyAction(deviceKeys) {
                     let keyRealIndex = keyIndex;
                     if (folderID !== '') {
-                        keyRealIndex = keyIndex + 1
+                        keyRealIndex = parseInt(keyIndex.toString()) + 1
                     }
                     if (deviceKeys[keyRealIndex].type === "action") {
                         if (deviceKeys[keyRealIndex].eventType === "get") {
