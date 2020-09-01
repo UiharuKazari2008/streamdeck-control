@@ -103,7 +103,7 @@ if (typeof config.devices["0"] !== undefined) {
 
         // Press Key
         streamDeck.on('down', keyIndex => {
-            if (deviceKeys[keyIndex] !== undefined && deviceKeys[keyIndex] !== null) {
+            if (config.devices[device].keys[keyIndex] !== undefined && config.devices[device].keys[keyIndex] !== null) {
                 console.log(`Key ${keyIndex} is bound like this...`)
 
                 function doKeyAction(deviceKeys) {
