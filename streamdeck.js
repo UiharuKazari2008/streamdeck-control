@@ -14,20 +14,18 @@ if (typeof config.devices !== undefined) {
         let streamDeck; // Init Device Object
         let deviceInfo;
         let folderID = '';
-        let keyImages
+        var keyImages = new Map();
 
         // Initialize device object
         if (config.devices[device].deviceID === "") {
             streamDeck = openStreamDeck(listStreamDecks()[0].path); // No Device given? No Problem!
             deviceInfo = getStreamDeckInfo(listStreamDecks()[0].path);
             streamDeck.clearAllKeys();
-            keyImages = new Map();
         } else {
             // Given a specific ID
             streamDeck = openStreamDeck(config.devices[device].deviceID.toString());
             deviceInfo = getStreamDeckInfo(config.devices[device].deviceID.toString());
             streamDeck.clearAllKeys();
-            keyImages = new Map();
         }
         // Set Brightness if set
         if (config.devices[device].brightness !== undefined) {
