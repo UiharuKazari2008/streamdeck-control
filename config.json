@@ -1,7 +1,7 @@
 {
   "devices": [
     {
-      "deviceID": "0001:0005:00",
+      "deviceID": "0001:0006:00",
       "brightness": "100",
       "keys": [
         {
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "deviceID": "0001:0006:00",
+      "deviceID": "0001:0005:00",
       "brightness": "100",
       "keys": [
         {
