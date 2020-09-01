@@ -1,22 +1,30 @@
 {
-  "devices": {
-    "0": {
+  "devices": [
+    {
       "deviceID": "0001:0005:00",
       "brightness": "100",
       "keys": [
         {
           "fillType": "color",
-          "fillParam": ["255", "0", "0"],
-          "eventType" : "curl",
+          "fillParam": [
+            "255",
+            "0",
+            "0"
+          ],
+          "eventType": "curl",
           "eventParam": "here.jp"
         },
         {
           "fillType": "color",
-          "fillParam": ["0", "255", "0"],
-          "eventType" : "curl",
+          "fillParam": [
+            "0",
+            "255",
+            "0"
+          ],
+          "eventType": "curl",
           "eventParam": "here.jp"
         }
       ]
     }
-  }
+  ]
 }
