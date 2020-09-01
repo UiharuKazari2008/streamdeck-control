@@ -3,14 +3,14 @@
     "0": {
       "deviceID": "0001:0005:00",
       "brightness": "100",
-      "keys": {
-        "0": {
+      "keys": [
+        {
           "fillType": "color",
           "fillParam": ["255", "0", "0"],
           "eventType" : "curl",
           "eventParam": "here.jp"
         }
-      }
+      ]
     }
   }
 }
