@@ -83,7 +83,7 @@ if (typeof config.devices["0"] !== undefined) {
                 console.log(deviceKeys[keyIndex])
 
                 if (deviceKeys[keyIndex].eventType === "get") {
-                    if ((typeof deviceKeys[keyIndex].eventParam).ToString() === "string" && deviceKeys[keyIndex].eventParam !== undefined) {
+                    if ((typeof deviceKeys[keyIndex].eventParam).toString() === "string" && deviceKeys[keyIndex].eventParam !== undefined) {
                         request.get(deviceKeys[keyIndex].eventParam, function (err, res, body) {
                             if(err){
                                 console.log(`Failed to GET ${deviceKeys[keyIndex].eventParam} for key ${keyIndex} ...`)
