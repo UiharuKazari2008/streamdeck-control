@@ -35,6 +35,8 @@ if (typeof config.devices["0"] !== undefined) {
         // Fill keys from config
         for (let key in deviceKeys) {
             let keySetting = deviceKeys[key]
+
+            console.log((typeof keySetting.fillParam).toString())
             if (keySetting.fillType === "color") {
                 if ((typeof keySetting.fillParam).toString() === "Array" && keySetting.fillParam.length === 3) {
                     streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
