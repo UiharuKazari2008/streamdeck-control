@@ -25,7 +25,7 @@ if (typeof config.devices["0"] !== undefined) {
 
         for (let key in config.devices["0"].keys) {
             console.log(config.devices["0"].keys[key])
-            streamDeck0.fillColor(key, config.devices["0"].keys[key].fillParam[0], config.devices["0"].keys[key].fillParam[1], config.devices["0"].keys[key].fillParam[2])
+            streamDeck0.fillColor(parseInt(key), config.devices["0"].keys[key].fillParam[0], config.devices["0"].keys[key].fillParam[1], config.devices["0"].keys[key].fillParam[2])
         }
 
         streamDeck0.on('down', keyIndex => {
