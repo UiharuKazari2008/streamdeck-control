@@ -99,7 +99,9 @@ if (typeof config.devices !== undefined) {
                     }
                 }
             }
-            console.log(keyImages.keys())
+            keyImages.forEach(function (value, key) {
+                console.log(key)
+            })
         }
         cacheImages();
 
