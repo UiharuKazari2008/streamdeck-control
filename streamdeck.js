@@ -11,7 +11,7 @@ let streamDeck2
 
 if (typeof config.devices["0"] !== undefined) {
 
-    for (let device in config.devices["0"].keys) {
+    for (let device in config.devices) {
         let streamDeck // Init Device Object
         let deviceInfo
 
