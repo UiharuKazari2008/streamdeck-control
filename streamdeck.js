@@ -42,14 +42,3 @@ if (typeof config.devices["0"] !== undefined) {
 
     }
 }
-
-
-
-
-
-// Fired whenever an error is detected by the `node-hid` library.
-// Always add a listener for this event! If you don't, errors will be silently dropped.
-
-// Fill the first button form the left in the first row with a solid red color. This is synchronous.
-myStreamDeck.fillColor(4, 255, 0, 0)
-console.log('Successfully wrote a red square to key 4.')
