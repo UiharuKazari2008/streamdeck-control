@@ -2,6 +2,7 @@
   "name": "streamdeck-control",
   "version": "1.0.0",
   "dependencies": {
-    "elgato-stream-deck": "^3.3.2"
+    "elgato-stream-deck": "^3.3.2",
+    "sharp": "^0.26.0"
   }
 }

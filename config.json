@@ -3,6 +3,7 @@
     {
       "deviceID": "0001:0005:00",
       "brightness": "100",
+      "fillDevice": "",
       "keys": [
         {
           "fillType": "color",
@@ -26,8 +27,8 @@
         },
         {
           "fillType": "image",
-          "fillParam": "./file",
-          "eventType": "curl",
+          "fillParam": "img/fan.png",
+          "eventType": "get",
           "eventParam": "here.jp"
         }
       ]

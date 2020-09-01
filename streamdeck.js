@@ -1,13 +1,11 @@
+const fs = require('fs');
 const path = require('path')
+const sharp = require('sharp')
 const { openStreamDeck, listStreamDecks, getStreamDeckInfo } = require('elgato-stream-deck')
 
 const config = require('./config.json');
 
 console.log('Devices: ', listStreamDecks())
-
-
-let streamDeck1
-let streamDeck2
 
 if (typeof config.devices["0"] !== undefined) {
     for (let device in config.devices) {
@@ -24,39 +22,56 @@ if (typeof config.devices["0"] !== undefined) {
         }
         // Reset keypad
         streamDeck.clearAllKeys()
-
         // Set Brightness if set
         if (typeof config.devices[device].brightness !== undefined) {
             streamDeck.setBrightness(config.devices[device].brightness.toString())
         }
 
         const deviceKeys = config.devices[device].keys
-
         // Fill keys from config
-        for (let key in deviceKeys) {
-            let keySetting = deviceKeys[key]
-
-            console.log((typeof keySetting.fillParam).toString())
-            if (keySetting.fillType === "color") {
-                if ((typeof keySetting.fillParam).toString() === "object" && keySetting.fillParam.length === 3) {
-                    console.log(`Set Color for ${key} to ${keySetting.fillParam[0]},${keySetting.fillParam[1]},${keySetting.fillParam[2]}`)
-                    streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
-                } else {
-                    console.error(`Key ${key} Fill Settings are not as expected, Should be a Array ["R", "G", "B"]`)
-                }
-            } else if (keySetting.fillType === "image") {
-                if ((typeof keySetting.fillParam).toString() === "string") {
-                    console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
-                    //streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
-                } else {
-                    console.error(`Key ${key} Fill Settings are not as expected, Should be a String "./file/path"`)
+        if (typeof config.devices[device].fillDevice !== undefined) {
+            // If set to not fill, then set each key
+            if (config.devices[device].fillDevice === "") {
+                for (let key in deviceKeys) {
+                    let keySetting = deviceKeys[key]
+                    if (keySetting.fillType === "color") {
+                        if ((typeof keySetting.fillParam).toString() === "object" && keySetting.fillParam.length === 3) {
+                            console.log(`Set Color for ${key} to ${keySetting.fillParam[0]},${keySetting.fillParam[1]},${keySetting.fillParam[2]}`)
+                            streamDeck.fillColor(parseInt(key), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
+                        } else {
+                            console.error(`Key ${key} Fill Settings are not as expected, Should be a Array ["R", "G", "B"]`)
+                        }
+                    } else if (keySetting.fillType === "image") {
+                        if ((typeof keySetting.fillParam).toString() === "string") {
+                            if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
+                                console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
+                                sharp(path.resolve(__dirname, keySetting.fillParam.toString()))
+                                    .flatten() // Eliminate alpha channel, if any.
+                                    .resize(streamDeck.ICON_SIZE, streamDeck.ICON_SIZE) // Scale up/down to the right size, cropping if necessary.
+                                    .raw() // Give us uncompressed RGB.
+                                    .toBuffer()
+                                    .then(buffer => {
+                                        streamDeck.fillImage(key, buffer)
+                                    })
+                                    .catch(err => {
+                                        console.error(`Failed to set image on key ${key} due to a Sharp error! ....`)
+                                        console.error(err)
+                                    })
+                            } else {
+                                console.error(`Set Image for ${key} to ${keySetting.fillParam.toString()} failed, Does not Exist!`)
+                            }
+                        } else {
+                            console.error(`Key ${key} Fill Settings are not as expected, Should be a String "./file/path"`)
+                        }
+                    } else {
+                        console.error(`Unknown Fill Type of : ${keySetting.fillType}`)
+                    }
                 }
             } else {
-                console.error(`Unknown Fill Type of : ${keySetting.fillType}`)
+                // Fill Entire Panel, but not implimented yet LOL, do it your self loser! (or wait for me to add it)
             }
-
-
         }
+
 
         // Press Key
         streamDeck.on('down', keyIndex => {
