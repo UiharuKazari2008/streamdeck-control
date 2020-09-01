@@ -138,7 +138,7 @@ if (typeof config.devices["0"] !== undefined) {
                 if (folderID === "") {
                     doKeyAction(config.devices[device].keys)
                 } else {
-                    if (doKeyAction(config.devices[device].keys[keyIndex].items !== undefined && doKeyAction(config.devices[device].keys[keyIndex].items.length > 0) {
+                    if (config.devices[device].keys[keyIndex].items !== undefined && config.devices[device].keys[keyIndex].items.length > 0) {
                         doKeyAction(config.devices[device].keys[keyIndex].items)
                     } else {
                         console.log(`Folder on Key ${keyIndex} is not correctly configured`)
