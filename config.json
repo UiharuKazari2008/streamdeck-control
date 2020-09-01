@@ -9,6 +9,12 @@
           "fillParam": ["255", "0", "0"],
           "eventType" : "curl",
           "eventParam": "here.jp"
+        },
+        {
+          "fillType": "color",
+          "fillParam": ["0", "255", "0"],
+          "eventType" : "curl",
+          "eventParam": "here.jp"
         }
       ]
     }
