@@ -113,34 +113,38 @@ if (typeof config.devices["0"] !== undefined) {
                 console.log(`Key ${keyIndex} is bound like this...`)
 
                 function doKeyAction(deviceKeys) {
-                    if (deviceKeys[keyIndex].type === "action") {
-                        if (deviceKeys[keyIndex].eventType === "get") {
-                            if ((typeof deviceKeys[keyIndex].eventParam).toString() === "string" && deviceKeys[keyIndex].eventParam !== undefined) {
-                                request.get(deviceKeys[keyIndex].eventParam, function (err, res, body) {
+                    let keyRealIndex = keyIndex;
+                    if (folderID !== '') {
+                        keyRealIndex = parseInt(folderID) + 1
+                    }
+                    if (deviceKeys[keyRealIndex].type === "action") {
+                        if (deviceKeys[keyRealIndex].eventType === "get") {
+                            if ((typeof deviceKeys[keyRealIndex].eventParam).toString() === "string" && deviceKeys[keyRealIndex].eventParam !== undefined) {
+                                request.get(deviceKeys[keyRealIndex].eventParam, function (err, res, body) {
                                     if(err){
-                                        console.log(`Failed to GET ${deviceKeys[keyIndex].eventParam} for key ${keyIndex} ...`)
+                                        console.log(`Failed to GET ${deviceKeys[keyRealIndex].eventParam} for key ${keyRealIndex} ...`)
                                         console.error(err)
                                     } else {
-                                        console.log(`Sent GET to ${deviceKeys[keyIndex].eventParam} ...`)
+                                        console.log(`Sent GET to ${deviceKeys[keyRealIndex].eventParam} ...`)
                                         console.log(body.toString())
                                     }
                                 })
                             } else {
-                                console.log(`Key ${keyIndex} parameters are not correct, should be a string!`)
+                                console.log(`Key ${keyRealIndex} parameters are not correct, should be a string!`)
                             }
-                        } else if (deviceKeys[keyIndex].eventType === "post") {
+                        } else if (deviceKeys[keyRealIndex].eventType === "post") {
                             console.log("POST REQUEST")
-                        } else if (deviceKeys[keyIndex].eventType === "open") {
+                        } else if (deviceKeys[keyRealIndex].eventType === "open") {
                             console.log("OPEN REQUEST")
                         } else {
                             console.log("UNKNOWN REQUEST TYPE")
                         }
-                    } else if (deviceKeys[keyIndex].type === "folder") {
-                        if (deviceKeys[keyIndex].items !== undefined && deviceKeys[keyIndex].items.length > 0) {
-                            folderID = keyIndex;
-                            drawKeys(deviceKeys[keyIndex].items, 'folder');
+                    } else if (deviceKeys[keyRealIndex].type === "folder") {
+                        if (deviceKeys[keyRealIndex].items !== undefined && deviceKeys[keyRealIndex].items.length > 0) {
+                            folderID = keyRealIndex;
+                            drawKeys(deviceKeys[keyRealIndex].items, 'folder');
                         } else {
-                            console.log(`Folder on Key ${keyIndex} is not correctly configured or has no items in it`)
+                            console.log(`Folder on Key ${keyRealIndex} is not correctly configured or has no items in it`)
                         }
                     }
                 }
