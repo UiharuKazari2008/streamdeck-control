@@ -154,8 +154,9 @@ if (typeof config.devices !== undefined) {
                 // Fill entire device scree
             } else {
                 // Draw Each Key
-                drawKeys(config.devices[device].keys)
+
             }
+            drawKeys(config.devices[device].keys)
         }
 
         main();
