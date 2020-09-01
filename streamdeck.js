@@ -117,6 +117,8 @@ if (typeof config.devices["0"] !== undefined) {
                     if (folderID !== '') {
                         keyRealIndex = parseInt(keyIndex.toString()) + 1
                     }
+                    console.log(keyRealIndex)
+                    console.log(deviceKeys[keyRealIndex])
                     if (deviceKeys[keyRealIndex].type === "action") {
                         if (deviceKeys[keyRealIndex].eventType === "get") {
                             if ((typeof deviceKeys[keyRealIndex].eventParam).toString() === "string" && deviceKeys[keyRealIndex].eventParam !== undefined) {
