@@ -8,11 +8,12 @@ const config = require('./config.json');
 
 console.log('Devices: ', listStreamDecks());
 
-if (typeof config.devices["0"] !== undefined) {
+if (typeof config.devices !== undefined) {
     for (let device in config.devices) {
         let streamDeck // Init Device Object
         let deviceInfo
         let folderID = ''
+        let keyImages = new Map();
 
         if (config.devices[device].deviceID === "") {
             streamDeck = openStreamDeck() // No Device given? No Problem!
@@ -29,26 +30,71 @@ if (typeof config.devices["0"] !== undefined) {
             streamDeck.setBrightness(config.devices[device].brightness.toString())
         }
 
+        function cacheImages(deviceKeys) {
+            if (fs.existsSync(path.resolve(__dirname, 'img/back.png'))) {
+                console.log(`Set Image for 0 to back button`)
+                sharp(path.resolve(__dirname, 'img/back.png'))
+                    .flatten() // Eliminate alpha channel, if any.
+                    .resize(streamDeck.ICON_SIZE, streamDeck.ICON_SIZE) // Scale up/down to the right size, cropping if necessary.
+                    .raw() // Give us uncompressed RGB.
+                    .toBuffer()
+                    .then(buffer => {
+                        keyImages.set(`key-back`, buffer)
+                    })
+                    .catch(err => {
+                        console.error(`Failed to set image on key 0 due to a Sharp error! ....`)
+                        console.error(err)
+                    })
+            } else {
+                console.error(`Set Image for 0 to back button failed, Does not Exist!`)
+            }
+            for (let index in deviceKeys) {
+                function generateCacheSet(keySetting, key, folder) {
+                    if (keySetting.fillType === "image") {
+                        if ((typeof keySetting.fillParam).toString() === "string") {
+                            if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
+                                console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
+                                sharp(path.resolve(__dirname, keySetting.fillParam.toString()))
+                                    .flatten() // Eliminate alpha channel, if any.
+                                    .resize(streamDeck.ICON_SIZE, streamDeck.ICON_SIZE) // Scale up/down to the right size, cropping if necessary.
+                                    .raw() // Give us uncompressed RGB.
+                                    .toBuffer()
+                                    .then(buffer => {
+                                        if (folder !== undefined) {
+                                            keyImages.set(`${folder}-${key}`, buffer)
+                                        } else {
+                                            keyImages.set(`key-${key}`, buffer)
+                                        }
+                                    })
+                                    .catch(err => {
+                                        console.error(`Failed to set image cache on key ${key} due to a Sharp error! ....`)
+                                        console.error(err)
+                                    })
+                            } else {
+                                console.error(`Failed to cache image for ${key} to ${keySetting.fillParam.toString()} failed, Does not Exist!`)
+                            }
+                        } else {
+                            console.error(`Failed to cache image for ${key} : Fill Settings are not as expected, Should be a String "./file/path"`)
+                        }
+                    } else {
+                        console.error(`Unknown Fill Type of : ${keySetting.fillType}`)
+                    }
+                }
+                if (deviceKeys[index].type === "folder") {
+                    for (let folderIndex in deviceKeys[index].items) {
+                        generateCacheSet(deviceKeys[index].items[folderIndex], folderIndex, index)
+                    }
+                } else {
+                    generateCacheSet(deviceKeys[index], index)
+                }
+
+            }
+        }
+        cacheImages(config.devices[device].keys)
         function drawKeys(deviceKeys, arrayType) {
             streamDeck.clearAllKeys()
             if (arrayType === 'folder') {
-                if (fs.existsSync(path.resolve(__dirname, 'img/back.png'))) {
-                    console.log(`Set Image for 0 to back button`)
-                    sharp(path.resolve(__dirname, 'img/back.png'))
-                        .flatten() // Eliminate alpha channel, if any.
-                        .resize(streamDeck.ICON_SIZE, streamDeck.ICON_SIZE) // Scale up/down to the right size, cropping if necessary.
-                        .raw() // Give us uncompressed RGB.
-                        .toBuffer()
-                        .then(buffer => {
-                            streamDeck.fillImage(0, buffer)
-                        })
-                        .catch(err => {
-                            console.error(`Failed to set image on key 0 due to a Sharp error! ....`)
-                            console.error(err)
-                        })
-                } else {
-                    console.error(`Set Image for 0 to back button failed, Does not Exist!`)
-                }
+                streamDeck.fillImage(0, keyImages.get('key-back'))
             }
             for (let key in deviceKeys) {
                 let keySetting
@@ -66,27 +112,7 @@ if (typeof config.devices["0"] !== undefined) {
                         console.error(`Key ${key} Fill Settings are not as expected, Should be a Array ["R", "G", "B"]`)
                     }
                 } else if (keySetting.fillType === "image") {
-                    if ((typeof keySetting.fillParam).toString() === "string") {
-                        if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
-                            console.log(`Set Image for ${key} to ${keySetting.fillParam.toString()}`)
-                            sharp(path.resolve(__dirname, keySetting.fillParam.toString()))
-                                .flatten() // Eliminate alpha channel, if any.
-                                .resize(streamDeck.ICON_SIZE, streamDeck.ICON_SIZE) // Scale up/down to the right size, cropping if necessary.
-                                .raw() // Give us uncompressed RGB.
-                                .toBuffer()
-                                .then(buffer => {
-                                    streamDeck.fillImage(parseInt(key), buffer)
-                                })
-                                .catch(err => {
-                                    console.error(`Failed to set image on key ${key} due to a Sharp error! ....`)
-                                    console.error(err)
-                                })
-                        } else {
-                            console.error(`Set Image for ${key} to ${keySetting.fillParam.toString()} failed, Does not Exist!`)
-                        }
-                    } else {
-                        console.error(`Key ${key} Fill Settings are not as expected, Should be a String "./file/path"`)
-                    }
+                    streamDeck.fillImage(parseInt(key), keyImages.get(`key-${key}`))
                 } else if (deviceKeys[key] === "null") {
                     // Skip Key cause its set to blank
                 } else {
@@ -95,10 +121,14 @@ if (typeof config.devices["0"] !== undefined) {
             }
         }
 
+
+
         // Fill keys from config
+
         if (typeof config.devices[device].fillDevice !== undefined) {
             // If set to not fill, then set each key
             if (config.devices[device].fillDevice === "") {
+
                 drawKeys(config.devices[device].keys, 'init')
             } else {
                 // Fill Entire Panel, but not implimented yet LOL, do it your self loser! (or wait for me to add it)
