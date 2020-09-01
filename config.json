@@ -59,6 +59,20 @@
           "fillParam": "img/12.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck3?event=single-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/13.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/14.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-mac1ready?event=long-press"
         }
       ]
     },
@@ -70,44 +84,73 @@
         {
           "type": "folder",
           "fillType": "image",
-          "fillParam": "img/1.png",
+          "fillParam": "img/16.png",
           "items": [
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/0.png",
+              "fillParam": "img/17.png",
               "eventType": "curl",
-              "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=single-press"
+            },
+            {
+              "type": "action",
+              "fillType": "image",
+              "fillParam": "img/18.png",
+              "eventType": "curl",
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=double-press"
+            },
+            {
+              "type": "action",
+              "fillType": "image",
+              "fillParam": "img/19.png",
+              "eventType": "curl",
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=long-press"
+            },
+            {
+              "type": "action",
+              "fillType": "image",
+              "fillParam": "img/20.png",
+              "eventType": "curl",
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=single-press"
+            },
+            {
+              "type": "action",
+              "fillType": "image",
+              "fillParam": "img/21.png",
+              "eventType": "curl",
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=double-press"
             }
           ]
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/1.png",
+          "fillParam": "img/15.png",
           "eventType": "curl",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=double-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/2.png",
+          "fillParam": "img/13.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck7?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
           "fillParam": "img/3.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=single-press"
         },
+        "null",
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/4.png",
+          "fillParam": "img/13.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
         }
       ]
     }
