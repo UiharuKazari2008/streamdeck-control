@@ -11,18 +11,18 @@ let streamDeck2
 
 if (typeof config.devices["0"] !== undefined) {
 
-    for (let devices in config.devices["0"].keys) {
+    for (let device in config.devices["0"].keys) {
         let streamDeck // Init Device Object
         let deviceInfo
 
-        if (config.devices["0"].deviceID === "") {
+        if (config.devices[device].deviceID === "") {
             streamDeck = openStreamDeck() // No Device given? No Problem!
             deviceInfo = getStreamDeckInfo()
 
         } else {
             // Given a specific ID
-            streamDeck = openStreamDeck(config.devices["0"].deviceID.toString())
-            deviceInfo = getStreamDeckInfo(config.devices["0"].deviceID.toString())
+            streamDeck = openStreamDeck(config.devices[device].deviceID.toString())
+            deviceInfo = getStreamDeckInfo(config.devices[device].deviceID.toString())
         }
         // Print Device Info
         console.log(deviceInfo)
@@ -31,14 +31,14 @@ if (typeof config.devices["0"] !== undefined) {
         streamDeck.clearAllKeys()
 
         // Set Brightness if set
-        if (typeof config.devices["0"].brightness !== undefined) {
-            streamDeck.setBrightness(config.devices["0"].brightness.toString())
+        if (typeof config.devices[device].brightness !== undefined) {
+            streamDeck.setBrightness(config.devices[device].brightness.toString())
         }
 
         // Fill keys from config
-        for (let key in config.devices["0"].keys) {
-            console.log(config.devices["0"].keys[key])
-            streamDeck.fillColor(parseInt(key), config.devices["0"].keys[key].fillParam[0], config.devices["0"].keys[key].fillParam[1], config.devices["0"].keys[key].fillParam[2])
+        for (let key in config.devices[device].keys) {
+            console.log(config.devices[device].keys[key])
+            streamDeck.fillColor(parseInt(key), config.devices[device].keys[key].fillParam[0], config.devices[device].keys[key].fillParam[1], config.devices[device].keys[key].fillParam[2])
         }
 
         // Press Key
@@ -55,7 +55,7 @@ if (typeof config.devices["0"] !== undefined) {
         })
     }
 
-    if (typeof config.devices["0"].deviceID !== undefined) {
+    if (typeof config.devices[device].deviceID !== undefined) {
 
 
 
