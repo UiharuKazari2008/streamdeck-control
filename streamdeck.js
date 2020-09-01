@@ -99,13 +99,14 @@ if (typeof config.devices !== undefined) {
                     }
                 }
             }
+            console.log(keyImages.keys())
         }
         cacheImages();
 
         function drawKeys(deviceKeys, folderIndex) {
             streamDeck.clearAllKeys() // Erase Current Keys off screen
             if (folderIndex !== undefined) { // If inside folder, set first item to back icon
-                streamDeck.fillImage(0, keyImages.get('key-back'))
+                streamDeck.fillImage(0, keyImages.get('default-back'))
             }
             for (let index in deviceKeys) {
                 let keySetting
