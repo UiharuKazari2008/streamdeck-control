@@ -79,31 +79,31 @@ if (typeof config.devices !== undefined) {
                                         keyImages.set(keyIndexString, buffer) // Save Buffer to Map
                                     })
                                     .catch(err => {
-                                        console.error(`Failed to cache for key #${keyIndexString} due to a Sharp error! ....`)
-                                        console.error(err)
+                                        console.error(`Failed to cache for key #${keyIndexString} due to a Sharp error! ....`);
+                                        console.error(err);
                                     })
                             } else {
-                                console.error(`Failed to cache for key #${keyIndexString} to file "${keySetting.fillParam.toString()}", File does not exist!`)
+                                console.error(`Failed to cache for key #${keyIndexString} to file "${keySetting.fillParam.toString()}", File does not exist!`);
                             }
                         } else {
-                            console.error(`Failed to cache image for key #${keyIndexString}, Fill Settings are not as expected (Should be a String "./file/path")`)
+                            console.error(`Failed to cache image for key #${keyIndexString}, Fill Settings are not as expected (Should be a String "./file/path")`);
                         }
                     }
                 }
 
                 if (deviceKeys[index].type === "action") { // if is standard action button
-                    generateCacheSet(deviceKeys[index], index)
+                    generateCacheSet(deviceKeys[index], index);
                 } else if (deviceKeys[index].type === "folder") { // if is a folder of items
                     for (let folderIndex in deviceKeys[index].items) {
-                        generateCacheSet(deviceKeys[index].items[folderIndex], folderIndex, index)
+                        generateCacheSet(deviceKeys[index].items[folderIndex], folderIndex, index);
                     }
                 }
             }
-            keyImages.forEach(function (value, key) {
-                console.log(key)
-            })
         }
         cacheImages();
+        keyImages.forEach(function (value, key) {
+            console.log(key);
+        });
 
         function drawKeys(deviceKeys, folderIndex) {
             streamDeck.clearAllKeys() // Erase Current Keys off screen
