@@ -1,7 +1,7 @@
 const path = require('path')
 const { openStreamDeck, listStreamDecks } = require('elgato-stream-deck')
 
-const config = require('../config.json');
+const config = require('./config.json');
 
 console.log('Devices: ', listStreamDecks())
 
