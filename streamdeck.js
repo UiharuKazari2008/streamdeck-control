@@ -108,6 +108,8 @@ if (typeof config.devices !== undefined) {
             if (folderIndex !== undefined) { // If inside folder, set first item to back icon
                 streamDeck.fillImage(0, keyImages.get('default-back'))
             }
+            console.log('Setting device keys..')
+            console.log(deviceKeys)
 
             for (let index in deviceKeys) {
                 let keySetting
