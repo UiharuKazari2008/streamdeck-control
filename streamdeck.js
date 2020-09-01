@@ -14,7 +14,7 @@ if (typeof config.devices !== undefined) {
         let streamDeck; // Init Device Object
         let deviceInfo;
         let folderID = '';
-        var keyImages = new Map();
+        let keyImages = new Map();
 
         // Initialize device object
         if (config.devices[device].deviceID === "") {
@@ -87,6 +87,7 @@ if (typeof config.devices !== undefined) {
                 if (deviceKeys[index].type === "action") { // if is standard action button
                     generateCacheSet(deviceKeys[index], index);
                 } else if (deviceKeys[index].type === "folder") { // if is a folder of items
+                    generateCacheSet(deviceKeys[index], index);
                     for (let folderIndex in deviceKeys[index].items) {
                         generateCacheSet(deviceKeys[index].items[folderIndex], folderIndex, index);
                     }
