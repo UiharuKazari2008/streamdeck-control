@@ -10,7 +10,6 @@ let streamDeck1
 let streamDeck2
 
 if (typeof config.devices["0"] !== undefined) {
-
     for (let device in config.devices) {
         let streamDeck // Init Device Object
         let deviceInfo
@@ -53,11 +52,5 @@ if (typeof config.devices["0"] !== undefined) {
         streamDeck.on('error', error => {
             console.error(error)
         })
-    }
-
-    if (typeof config.devices[device].deviceID !== undefined) {
-
-
-
     }
 }
