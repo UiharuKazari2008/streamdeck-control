@@ -30,6 +30,9 @@ if (typeof config.devices !== undefined) {
             streamDeck.setBrightness(config.devices[device].brightness.toString())
         }
 
+        function sleep(millis) {
+            return new Promise(resolve => setTimeout(resolve, millis));
+        }
         function cacheImages(deviceKeys) {
             if (fs.existsSync(path.resolve(__dirname, 'img/back.png'))) {
                 console.log(`Set Image for 0 to back button`)
@@ -124,16 +127,20 @@ if (typeof config.devices !== undefined) {
 
 
         // Fill keys from config
-
-        if (typeof config.devices[device].fillDevice !== undefined) {
-            // If set to not fill, then set each key
-            if (config.devices[device].fillDevice === "") {
-
-                drawKeys(config.devices[device].keys, 'init')
-            } else {
-                // Fill Entire Panel, but not implimented yet LOL, do it your self loser! (or wait for me to add it)
+        async function main() {
+            console.log("Waiting to draw keys");
+            await sleep(2000);
+            if (typeof config.devices[device].fillDevice !== undefined) {
+                // If set to not fill, then set each key
+                if (config.devices[device].fillDevice === "") {
+                    drawKeys(config.devices[device].keys, 'init')
+                } else {
+                    // Fill Entire Panel, but not implimented yet LOL, do it your self loser! (or wait for me to add it)
+                }
             }
         }
+
+        main();
 
 
         // Press Key
