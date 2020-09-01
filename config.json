@@ -140,7 +140,7 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/3.png",
+          "fillParam": "img/emm.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=single-press"
         },
