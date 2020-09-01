@@ -23,6 +23,12 @@
           ],
           "eventType": "curl",
           "eventParam": "here.jp"
+        },
+        {
+          "fillType": "image",
+          "fillParam": "./file",
+          "eventType": "curl",
+          "eventParam": "here.jp"
         }
       ]
     }
