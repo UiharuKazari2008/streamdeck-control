@@ -23,7 +23,7 @@ if (typeof config.devices["0"] !== undefined) {
             streamDeck0.setBrightness(config.devices["0"].brightness.toString())
         }
 
-        for (let key in config.devices["0"].keys) {
+        for (let key of config.devices["0"].keys) {
             streamDeck0.fillColor(config.devices["0"].keys[key].toString(), config.devices["0"].keys[key].fillParam[0], config.devices["0"].keys[key].fillParam[1], config.devices["0"].keys[key].fillParam[2])
         }
 
