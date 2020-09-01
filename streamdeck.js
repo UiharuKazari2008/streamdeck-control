@@ -11,25 +11,27 @@ console.log('Devices:\n', listStreamDecks());
 
 if (typeof config.devices !== undefined) {
     for (let device in config.devices) {
-        let streamDeck // Init Device Object
-        let deviceInfo
-        let folderID = ''
-        let keyImages = new Map();
+        let streamDeck; // Init Device Object
+        let deviceInfo;
+        let folderID = '';
+        let keyImages
 
         // Initialize device object
         if (config.devices[device].deviceID === "") {
-            streamDeck = openStreamDeck(listStreamDecks()[0].path) // No Device given? No Problem!
-            deviceInfo = getStreamDeckInfo(listStreamDecks()[0].path)
-            streamDeck.clearAllKeys()
+            streamDeck = openStreamDeck(listStreamDecks()[0].path); // No Device given? No Problem!
+            deviceInfo = getStreamDeckInfo(listStreamDecks()[0].path);
+            streamDeck.clearAllKeys();
+            keyImages = new Map();
         } else {
             // Given a specific ID
-            streamDeck = openStreamDeck(config.devices[device].deviceID.toString())
-            deviceInfo = getStreamDeckInfo(config.devices[device].deviceID.toString())
-            streamDeck.clearAllKeys()
+            streamDeck = openStreamDeck(config.devices[device].deviceID.toString());
+            deviceInfo = getStreamDeckInfo(config.devices[device].deviceID.toString());
+            streamDeck.clearAllKeys();
+            keyImages = new Map();
         }
         // Set Brightness if set
-        if (typeof config.devices[device].brightness !== undefined) {
-            streamDeck.setBrightness(parseInt(config.devices[device].brightness))
+        if (config.devices[device].brightness !== undefined) {
+            streamDeck.setBrightness(parseInt(config.devices[device].brightness));
         }
 
         function sleep(millis) {
@@ -71,7 +73,6 @@ if (typeof config.devices !== undefined) {
                                     .toBuffer()
                                     .then(buffer => {
                                         keyImages.set(keySetting.fillParam, buffer) // Save Buffer to Map
-                                        console.log(keySetting.fillParam);
                                     })
                                     .catch(err => {
                                         console.error(err);
@@ -127,7 +128,6 @@ if (typeof config.devices !== undefined) {
                         console.error(`Failed to fill Key #${keyIndexString}, Fill Settings are not as expected (Should be a Array ["R", "G", "B"])`)
                     }
                 } else if (keySetting.fillType === "image") {
-                    console.log(keyImages.get(keySetting.fillParam))
                     streamDeck.fillImage(keyIndex, keyImages.get(keySetting.fillParam))
                 } else if (deviceKeys[keyIndex] === "null") {
                     // Skip Key cause its set to blank
@@ -143,7 +143,8 @@ if (typeof config.devices !== undefined) {
         async function main() {
             console.log("Waiting to draw keys");
             await sleep(2000);
-            if (typeof config.devices[device].fillDevice !== undefined) {
+
+            if (config.devices[device].fillDevice !== undefined) {
                 // Fill entire device scree
             } else {
                 // Draw Each Key
@@ -214,7 +215,7 @@ if (typeof config.devices !== undefined) {
                     }
                 }
             } else {
-                console.log(`Key ${keyIndex} is not bound to any key at this time.`)
+                console.log(`Key ${keyIndex} is not bound to any key at this time.`);
             }
         })
 
