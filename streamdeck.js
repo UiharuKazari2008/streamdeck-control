@@ -130,7 +130,7 @@ if (typeof config.devices["0"] !== undefined) {
                             console.log("UNKNOWN REQUEST TYPE")
                         }
                     } else if (deviceKeys[keyIndex].type === "folder") {
-                        drawKeys(deviceKeys[keyIndex].items, 'folder')
+                        drawKeys(deviceKeys[keyIndex], 'folder')
                         folderID = keyIndex;
                     }
                 }
