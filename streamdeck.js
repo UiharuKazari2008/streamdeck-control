@@ -149,10 +149,11 @@ if (typeof config.devices["0"] !== undefined) {
                     doKeyAction(config.devices[device].keys)
                 } else {
                     if (keyIndex === 0) {
+                        folderID = ''
                         drawKeys(config.devices[device].keys, 'init')
                     } else {
-                        if (config.devices[device].keys[keyIndex].items !== undefined && config.devices[device].keys[keyIndex].items.length > 0) {
-                            doKeyAction(config.devices[device].keys[keyIndex].items)
+                        if (config.devices[device].keys[folderID].items !== undefined && config.devices[device].keys[folderID].items.length > 0) {
+                            doKeyAction(config.devices[device].keys[folderID].items)
                         } else {
                             console.log(`Folder on Key ${keyIndex} is not correctly configured`)
                         }
