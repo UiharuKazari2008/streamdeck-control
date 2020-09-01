@@ -11,7 +11,7 @@
             "0",
             "0"
           ],
-          "eventType": "curl",
+          "eventType": "get",
           "eventParam": "here.jp"
         },
         {
