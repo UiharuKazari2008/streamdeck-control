@@ -77,6 +77,7 @@ if (typeof config.devices !== undefined) {
                                     .toBuffer()
                                     .then(buffer => {
                                         keyImages.set(keyIndexString, buffer) // Save Buffer to Map
+                                        console.log(keyIndexString);
                                     })
                                     .catch(err => {
                                         console.error(`Failed to cache for key #${keyIndexString} due to a Sharp error! ....`);
@@ -101,9 +102,6 @@ if (typeof config.devices !== undefined) {
             }
         }
         cacheImages();
-        keyImages.forEach(function (value, key) {
-            console.log(key);
-        });
 
         function drawKeys(deviceKeys, folderIndex) {
             streamDeck.clearAllKeys() // Erase Current Keys off screen
