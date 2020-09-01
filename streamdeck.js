@@ -90,6 +90,7 @@ if (typeof config.devices["0"] !== undefined) {
                 }
             }
         }
+
         // Fill keys from config
         if (typeof config.devices[device].fillDevice !== undefined) {
             // If set to not fill, then set each key
@@ -130,8 +131,12 @@ if (typeof config.devices["0"] !== undefined) {
                             console.log("UNKNOWN REQUEST TYPE")
                         }
                     } else if (deviceKeys[keyIndex].type === "folder") {
-                        drawKeys(deviceKeys[keyIndex], 'folder')
-                        folderID = keyIndex;
+                        if (deviceKeys[keyIndex].items !== undefined && deviceKeys[keyIndex].items.length > 0) {
+                            folderID = keyIndex;
+                            drawKeys(deviceKeys[keyIndex].items, 'folder');
+                        } else {
+                            console.log(`Folder on Key ${keyIndex} is not correctly configured or has no items in it`)
+                        }
                     }
                 }
 
