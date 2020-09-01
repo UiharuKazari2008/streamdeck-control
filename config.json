@@ -2,40 +2,40 @@
   "devices": [
     {
       "deviceID": "0001:0006:00",
-      "brightness": "100",
+      "brightness": "75",
       "keys": [
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/0.png",
+          "fillParam": "img/homekit/day.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/1.png",
+          "fillParam": "img/homekit/work.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/2.png",
+          "fillParam": "img/homekit/night.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/3.png",
+          "fillParam": "img/homekit/fan.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/4.png",
+          "fillParam": "img/homekit/reset.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
         },
@@ -47,7 +47,7 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/10.png",
+          "fillParam": "img/record-start.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-recorder?event=double-press"
         },
@@ -55,21 +55,21 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/12.png",
+          "fillParam": "img/mute.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck3?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/13.png",
+          "fillParam": "img/cancel.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/14.png",
+          "fillParam": "img/eject.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-mac1ready?event=long-press"
         }
@@ -82,40 +82,40 @@
         {
           "type": "folder",
           "fillType": "image",
-          "fillParam": "img/16.png",
+          "fillParam": "img/input.png",
           "items": [
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/17.png",
+              "fillParam": "img/inputs/chrome.png",
               "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=single-press"
             },
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/18.png",
+              "fillParam": "img/inputs/ps4.png",
               "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=double-press"
             },
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/19.png",
+              "fillParam": "img/inputs/switch.png",
               "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=long-press"
             },
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/20.png",
+              "fillParam": "img/inputs/sega.png",
               "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=single-press"
             },
             {
               "type": "action",
               "fillType": "image",
-              "fillParam": "img/21.png",
+              "fillParam": "img/inputs/ps2.png",
               "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=double-press"
             }
@@ -124,14 +124,14 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/15.png",
+          "fillParam": "img/switch.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=double-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/12.png",
+          "fillParam": "img/mute.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck7?event=single-press"
         },
@@ -146,7 +146,7 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/13.png",
+          "fillParam": "img/cancel.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
         }
