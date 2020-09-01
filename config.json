@@ -16,7 +16,7 @@
           "type": "action",
           "fillType": "image",
           "fillParam": "img/1.png",
-          "eventType": "curl",
+          "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
         },
         {
@@ -90,35 +90,35 @@
               "type": "action",
               "fillType": "image",
               "fillParam": "img/17.png",
-              "eventType": "curl",
+              "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=single-press"
             },
             {
               "type": "action",
               "fillType": "image",
               "fillParam": "img/18.png",
-              "eventType": "curl",
+              "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=double-press"
             },
             {
               "type": "action",
               "fillType": "image",
               "fillParam": "img/19.png",
-              "eventType": "curl",
+              "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck9?event=long-press"
             },
             {
               "type": "action",
               "fillType": "image",
               "fillParam": "img/20.png",
-              "eventType": "curl",
+              "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=single-press"
             },
             {
               "type": "action",
               "fillType": "image",
               "fillParam": "img/21.png",
-              "eventType": "curl",
+              "eventType": "get",
               "eventParam": "http://192.168.100.62:3001/button-streamdeck10?event=double-press"
             }
           ]
@@ -127,7 +127,7 @@
           "type": "action",
           "fillType": "image",
           "fillParam": "img/15.png",
-          "eventType": "curl",
+          "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=double-press"
         },
         {
