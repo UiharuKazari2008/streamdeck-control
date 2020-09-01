@@ -50,10 +50,13 @@ if (typeof config.devices["0"] !== undefined) {
                 }
             }
             for (let key in deviceKeys) {
-                if (key === '0' && arrayType === 'folder') {
-                    key = '1'
+                let keySetting
+                if (arrayType === 'folder') {
+                    keySetting = deviceKeys[key]
+                    key = parseInt(key) + 1
+                } else {
+                    keySetting = deviceKeys[key]
                 }
-                let keySetting = deviceKeys[key]
                 if (keySetting.fillType === "color") {
                     if ((typeof keySetting.fillParam).toString() === "object" && keySetting.fillParam.length === 3) {
                         console.log(`Set Color for ${key} to ${keySetting.fillParam[0]},${keySetting.fillParam[1]},${keySetting.fillParam[2]}`)
