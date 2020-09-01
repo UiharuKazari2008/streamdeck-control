@@ -9,31 +9,49 @@
           "fillType": "image",
           "fillParam": "img/0.png",
           "eventType": "get",
-          "eventParam": "here.jp"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=single-press"
         },
         {
           "fillType": "image",
           "fillParam": "img/1.png",
           "eventType": "curl",
-          "eventParam": "here.jp"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
         },
         {
           "fillType": "image",
           "fillParam": "img/2.png",
           "eventType": "get",
-          "eventParam": "here.jp"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
         },
         {
           "fillType": "image",
           "fillParam": "img/3.png",
           "eventType": "get",
-          "eventParam": "here.jp"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
         },
         {
           "fillType": "image",
           "fillParam": "img/4.png",
           "eventType": "get",
-          "eventParam": "here.jp"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
+        },
+        "null",
+        "null",
+        "null",
+        "null",
+        "null",
+        {
+          "fillType": "image",
+          "fillParam": "img/10.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-recorder?event=double-press"
+        },
+        "null",
+        {
+          "fillType": "image",
+          "fillParam": "img/12.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck3?event=single-press"
         }
       ]
     }

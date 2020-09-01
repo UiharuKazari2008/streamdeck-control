@@ -1,11 +1,12 @@
 const fs = require('fs');
-const path = require('path')
-const sharp = require('sharp')
-const { openStreamDeck, listStreamDecks, getStreamDeckInfo } = require('elgato-stream-deck')
+const path = require('path');
+const sharp = require('sharp');
+const request = require('request').defaults({ encoding: null });
+const { openStreamDeck, listStreamDecks, getStreamDeckInfo } = require('elgato-stream-deck');
 
 const config = require('./config.json');
 
-console.log('Devices: ', listStreamDecks())
+console.log('Devices: ', listStreamDecks());
 
 if (typeof config.devices["0"] !== undefined) {
     for (let device in config.devices) {
@@ -82,7 +83,19 @@ if (typeof config.devices["0"] !== undefined) {
                 console.log(deviceKeys[keyIndex])
 
                 if (deviceKeys[keyIndex].eventType === "get") {
-                    console.log("GET REQUEST")
+                    if ((typeof deviceKeys[keyIndex].eventParam).ToString() === "string" && deviceKeys[keyIndex].eventParam !== undefined) {
+                        request.get(deviceKeys[keyIndex].eventParam, function (err, res, body) {
+                            if(err){
+                                console.log(`Failed to GET ${deviceKeys[keyIndex].eventParam} for key ${keyIndex} ...`)
+                                console.error(err)
+                            } else {
+                                console.log(`Sent GET to ${deviceKeys[keyIndex].eventParam}!`)
+                            }
+                        })
+                    } else {
+                        console.log(`Key ${keyIndex} parameters are not correct, should be a string!`)
+                    }
+
                 } else if (deviceKeys[keyIndex].eventType === "post") {
                     console.log("POST REQUEST")
                 } else if (deviceKeys[keyIndex].eventType === "open") {
