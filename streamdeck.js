@@ -108,6 +108,7 @@ if (typeof config.devices !== undefined) {
             if (folderIndex !== undefined) { // If inside folder, set first item to back icon
                 streamDeck.fillImage(0, keyImages.get('default-back'))
             }
+
             for (let index in deviceKeys) {
                 let keySetting
                 let keyIndex
@@ -126,12 +127,12 @@ if (typeof config.devices !== undefined) {
                 if (keySetting.fillType === "color") {
                     if ((typeof keySetting.fillParam).toString() === "object" && keySetting.fillParam.length === 3) {
                         console.log(`Set Color for key #${keyIndexString} to ${keySetting.fillParam[0]},${keySetting.fillParam[1]},${keySetting.fillParam[2]}`)
-                        streamDeck.fillColor(parseInt(keyIndex), keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
+                        streamDeck.fillColor(keyIndex, keySetting.fillParam[0], keySetting.fillParam[1], keySetting.fillParam[2])
                     } else {
                         console.error(`Failed to fill Key #${keyIndexString}, Fill Settings are not as expected (Should be a Array ["R", "G", "B"])`)
                     }
                 } else if (keySetting.fillType === "image") {
-                    streamDeck.fillImage(parseInt(keyIndex), keyImages.get(keyIndexString))
+                    streamDeck.fillImage(keyIndex, keyImages.get(keyIndexString))
                 } else if (deviceKeys[keyIndex] === "null") {
                     // Skip Key cause its set to blank
                 } else {
