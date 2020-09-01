@@ -30,9 +30,8 @@ if (typeof config.devices["0"] !== undefined) {
         }
 
         function drawKeys(deviceKeys, arrayType) {
+            streamDeck.clearAllKeys()
             if (arrayType === 'folder') {
-                streamDeck.clearAllKeys()
-
                 if (fs.existsSync(path.resolve(__dirname, 'img/back.png'))) {
                     console.log(`Set Image for 0 to back button`)
                     sharp(path.resolve(__dirname, 'img/back.png'))
