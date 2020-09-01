@@ -63,6 +63,8 @@ if (typeof config.devices["0"] !== undefined) {
                         } else {
                             console.error(`Key ${key} Fill Settings are not as expected, Should be a String "./file/path"`)
                         }
+                    } else if (deviceKeys[keyIndex] === null) {
+                        // Skip Key cause its set to blank
                     } else {
                         console.error(`Unknown Fill Type of : ${keySetting.fillType}`)
                     }
@@ -75,7 +77,7 @@ if (typeof config.devices["0"] !== undefined) {
 
         // Press Key
         streamDeck.on('down', keyIndex => {
-            if (deviceKeys[keyIndex] !== undefined) {
+            if (deviceKeys[keyIndex] !== undefined && deviceKeys[keyIndex] !== null) {
                 console.log(`Key ${keyIndex} is bound like this...`)
                 console.log(deviceKeys[keyIndex])
 
