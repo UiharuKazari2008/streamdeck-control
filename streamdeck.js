@@ -61,12 +61,6 @@ if (typeof config.devices !== undefined) {
             const deviceKeys = config.devices[device].keys;
             for (let index in deviceKeys) {
                 function generateCacheSet(keySetting, key, folder) {
-                    let keyIndexString
-                    if (folder !== undefined) {
-                        keyIndexString = `${folder}:${key}`
-                    } else {
-                        keyIndexString = `${key}`
-                    }
                     if (keySetting.fillType === "image") {
                         if ((typeof keySetting.fillParam).toString() === "string") {
                             if (fs.existsSync(path.resolve(__dirname, keySetting.fillParam.toString()))) {
@@ -76,18 +70,17 @@ if (typeof config.devices !== undefined) {
                                     .raw() // Give us uncompressed RGB.
                                     .toBuffer()
                                     .then(buffer => {
-                                        keyImages.set(keyIndexString, buffer) // Save Buffer to Map
-                                        console.log(keyIndexString);
+                                        keyImages.set(keySetting.fillParam, buffer) // Save Buffer to Map
+                                        console.log(keySetting.fillParam);
                                     })
                                     .catch(err => {
-                                        console.error(`Failed to cache for key #${keyIndexString} due to a Sharp error! ....`);
                                         console.error(err);
                                     })
                             } else {
-                                console.error(`Failed to cache for key #${keyIndexString} to file "${keySetting.fillParam.toString()}", File does not exist!`);
+                                console.error(`Failed to cache for key #${key} to file "${keySetting.fillParam.toString()}", File does not exist!`);
                             }
                         } else {
-                            console.error(`Failed to cache image for key #${keyIndexString}, Fill Settings are not as expected (Should be a String "./file/path")`);
+                            console.error(`Failed to cache image for key #${key}, Fill Settings are not as expected (Should be a String "./file/path")`);
                         }
                     }
                 }
@@ -134,8 +127,8 @@ if (typeof config.devices !== undefined) {
                         console.error(`Failed to fill Key #${keyIndexString}, Fill Settings are not as expected (Should be a Array ["R", "G", "B"])`)
                     }
                 } else if (keySetting.fillType === "image") {
-                    console.log(keyImages.get(keyIndexString))
-                    streamDeck.fillImage(keyIndex, keyImages.get(keyIndexString))
+                    console.log(keyImages.get(keySetting.fillParam))
+                    streamDeck.fillImage(keyIndex, keyImages.get(keySetting.fillParam))
                 } else if (deviceKeys[keyIndex] === "null") {
                     // Skip Key cause its set to blank
                 } else {
