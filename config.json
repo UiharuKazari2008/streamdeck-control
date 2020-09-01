@@ -6,30 +6,35 @@
       "fillDevice": "",
       "keys": [
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/0.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=single-press"
         },
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/1.png",
           "eventType": "curl",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
         },
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/2.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
         },
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/3.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
         },
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/4.png",
           "eventType": "get",
@@ -41,6 +46,7 @@
         "null",
         "null",
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/10.png",
           "eventType": "get",
@@ -48,10 +54,60 @@
         },
         "null",
         {
+          "type": "action",
           "fillType": "image",
           "fillParam": "img/12.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck3?event=single-press"
+        }
+      ]
+    },
+    {
+      "deviceID": "0001:0006:00",
+      "brightness": "100",
+      "fillDevice": "",
+      "keys": [
+        {
+          "type": "folder",
+          "fillType": "image",
+          "fillParam": "img/1.png",
+          "items": [
+            {
+              "type": "action",
+              "fillType": "image",
+              "fillParam": "img/1.png",
+              "eventType": "curl",
+              "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
+            }
+          ]
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/1.png",
+          "eventType": "curl",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/2.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/3.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/4.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
         }
       ]
     }
