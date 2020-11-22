@@ -1,8 +1,8 @@
 {
   "devices": [
     {
-      "deviceID": "0001:0006:00",
-      "brightness": "75",
+      "deviceID": "",
+      "brightness": "60",
       "keys": [
         {
           "type": "action",
@@ -35,9 +35,9 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/reset.png",
+          "fillParam": "img/homekit/heat.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=double-press"
         },
         "null",
         "null",
@@ -51,7 +51,6 @@
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-recorder?event=double-press"
         },
-        "null",
         {
           "type": "action",
           "fillType": "image",
@@ -65,6 +64,13 @@
           "fillParam": "img/cancel.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/homekit/reset.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
         },
         {
           "type": "action",
