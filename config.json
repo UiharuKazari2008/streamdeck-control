@@ -39,7 +39,13 @@
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=double-press"
         },
-        "null",
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/switch.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=double-press"
+        },
         "null",
         "null",
         "null",
