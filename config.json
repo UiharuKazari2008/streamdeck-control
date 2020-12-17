@@ -7,61 +7,48 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/day.png",
+          "fillParam": "img/channels/diplo.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/work.png",
+          "fillParam": "img/channels/bpm.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=double-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/night.png",
+          "fillParam": "img/channels/emo.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck1?event=long-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/fan.png",
+          "fillParam": "img/channels/hits.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=single-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/heat.png",
+          "fillParam": "img/channels/2k.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=double-press"
         },
-        {
-          "type": "action",
-          "fillType": "image",
-          "fillParam": "img/switch.png",
-          "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=double-press"
-        },
+        "null",
         "null",
         "null",
         "null",
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/windows-power.png",
+          "fillParam": "img/homekit/reset.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=single-press"
-        },
-        {
-          "type": "action",
-          "fillType": "image",
-          "fillParam": "img/record-start.png",
-          "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-recorder?event=double-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
         },
         {
           "type": "action",
@@ -73,16 +60,23 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/cancel.png",
+          "fillParam": "img/switch.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck6?event=long-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=double-press"
         },
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/homekit/reset.png",
+          "fillParam": "img/extend.png",
           "eventType": "get",
-          "eventParam": "http://192.168.100.62:3001/button-streamdeck2?event=long-press"
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=long-press"
+        },
+        {
+          "type": "action",
+          "fillType": "image",
+          "fillParam": "img/windows-power.png",
+          "eventType": "get",
+          "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=single-press"
         },
         {
           "type": "action",
