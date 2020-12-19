@@ -92,7 +92,7 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/windows-power.png",
+          "fillParam": "img/desktop-power.png",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck4?event=single-press"
         },
