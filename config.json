@@ -21,7 +21,7 @@
         {
           "type": "action",
           "fillType": "image",
-          "fillParam": "img/channels/asoa.png",
+          "fillParam": "img/channels/asoa.jpg",
           "eventType": "get",
           "eventParam": "http://192.168.100.62:3001/button-streamdeck3?event=double-press"
         },
